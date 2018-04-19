@@ -96,32 +96,37 @@ function getAveragePressure(cityName, dateTime, appId) {
     .call(yAxis);
   
 
-  var tooltip = d3.select("body")
-  .append("div")
-  .attr('class', 'tooltip');
+  var tooltip = d3.select("#home")
+                  .append("div")
+                  .attr('class', 'tooltip')
+                  .style("opacity", 0);
 
-    var circles = main.append("svg:g"); 
+  var circles = main.append("svg:g"); 
 
-    circles.selectAll("scatter-dots")
-      .data(data)  // using the values in the ydata array
-      .enter().append("svg:circle")  // create a new circle for each value
-          .attr("cy", function (d, i) { return y(d.value); } ) // translate y value to a pixel
-          .attr("cx", function (d, i) { return x(i); } ) // translate x value
-          .attr("r", 5) // radius of circle
-          .style("opacity", 0.6) // opacity of circle
-          .style("fill", function (d, i)   {
-            return 'DarkBlue';
-          }).on("mouseover", function (d, i) {
-              return tooltip.style("visibility", "visible")
-                            .html(i + "</br>"  + Math.round(d.value*100000000000)/10000)
-                            .style("left", (d3.event.pageX) + "px")   
-                            .style("top", (d3.event.pageY - 28) + "px");
+  circles.selectAll("scatter-dots")
+    .data(data)  // using the values in the ydata array
+    .enter().append("svg:circle")  // create a new circle for each value
+        .attr("cy", function (d, i) { return y(d.value); } ) // translate y value to a pixel
+        .attr("cx", function (d, i) { return x(i); } ) // translate x value
+        .attr("r", 5) // radius of circle
+        .style("opacity", 0.6) // opacity of circle
+        .style("fill", function (d, i)   {
+          return 'DarkBlue';
+        }).on("mouseover", function (d, i) {
 
-    console.log(i);
-                   //d3.select(this).style("fill", "black");
+            tooltip.transition()
+                   .duration(200)
+                   .style("opacity", .9);
+
+            tooltip.html(i + "</br>"  + Math.round(d.value*100000000000)/10000)
+                   .style("left", (d3.event.pageX) + "px")   
+                   .style("top", (d3.event.pageY - 28) + "px");
+
           }).on("mouseout", function (d) {
-            return tooltip.style("visibility", "hidden");  
-          });  // listener here: http://jsfiddle.net/cyril123/cnnL72gv/3/
+            tooltip.transition()
+                   .duration(500)
+                   .style("opacity", 0);
+          });
 
 
 

@@ -17,12 +17,6 @@ function getAveragePressure(cityName, dateTime, appId) {
 
     var maxDay = data.length;
 
-    // for (i=0; i<data.length; i++) {
-    //   console.log(data[i]);
-    //   if(data[i].day > maxDay)
-    //     maxDay = data[i].day;
-    // }
-
     var maxTemp = data[0].value;
 
     for (i=0; i<data.length; i++) {
@@ -37,8 +31,8 @@ function getAveragePressure(cityName, dateTime, appId) {
     var formatTime = d3.time.format("%e %B");
 
     // size and margins for the chart
-    var margin = {top: 200, right: 10, bottom: 60, left: 700}
-      , width = 1200 - margin.left - margin.right
+    var margin = {top: 50, right: 50, bottom: 50, left: 50}
+      , width =  800 - margin.left - margin.right
       , height = 500 - margin.top - margin.bottom;
 
     // x and y scales, I've used linear here but there are other options
@@ -96,7 +90,7 @@ function getAveragePressure(cityName, dateTime, appId) {
     .call(yAxis);
   
 
-  var tooltip = d3.select("#main_chart")
+  var tooltip = d3.select("#home")
                   .append("div")
                   .attr('class', 'tooltip')
                   .style("opacity", 0);
@@ -147,32 +141,6 @@ function getAveragePressure(cityName, dateTime, appId) {
                   .attr("y2", nextCircle.attr("cy"));
     }
 
-
-
-
-
-
-    // var labels = main.append("svg:g");
-
-    // labels.selectAll("text")
-    //   .data(data)
-    //   .enter()
-    //   .append("text")
-    //   .text(function (d, i)    {
-    //     return '(' + i + ',' + d.value + ')';
-    //   })
-    //   .attr("y", function (d, i)    {
-    //     return y(d.value);
-    //   })
-    //   .attr("x", function (d, i)    {
-    //     return x(i);
-    //   })
-    //   .attr("fill","blue")
-    //   .attr("font-size","15px");
-
-
-
-
       })
       .catch(function(err) {
         console.log(err);
@@ -182,7 +150,7 @@ function getAveragePressure(cityName, dateTime, appId) {
 
 
 
-getAveragePressure('0.0,10.0','current','333667886d834109b16601a96571a0b7');
+getAveragePressure('0.0,10.0','current','328e3675bd14abcf0063f7c52ddc80e6');
 
 
 

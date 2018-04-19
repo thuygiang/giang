@@ -96,7 +96,7 @@ function getAveragePressure(cityName, dateTime, appId) {
     .call(yAxis);
   
 
-  var tooltip = d3.select("#home")
+  var tooltip = d3.select("#main_chart")
                   .append("div")
                   .attr('class', 'tooltip')
                   .style("opacity", 0);

@@ -53,7 +53,7 @@ function getAveragePressure(cityName, dateTime, appId) {
               .range([ height, 0 ]);
 
     // the chart object, includes all margins
-    var chart = d3.select('body')
+    var chart = d3.select('#home')
     .append('svg:svg')
     .attr('width', width + margin.right + margin.left)
     .attr('height', height + margin.top + margin.bottom)
@@ -113,7 +113,7 @@ function getAveragePressure(cityName, dateTime, appId) {
             return 'DarkBlue';
           }).on("mouseover", function (d, i) {
               return tooltip.style("visibility", "visible")
-                            .text(i + "\n"  + Math.round(d.value*100000000000)/10000)
+                            .html(i + "</br>"  + Math.round(d.value*100000000000)/10000)
                             .style("left", (d3.event.pageX) + "px")   
                             .style("top", (d3.event.pageY - 28) + "px");
 

@@ -1,0 +1,43 @@
+body { font: 12px Arial;}
+
+		path { 
+		    stroke: steelblue;
+		    stroke-width: 2;
+		    fill: none;
+		}
+
+		.axis path,
+		.axis line {
+		    fill: none;
+		    stroke: grey;
+		    stroke-width: 1;
+		    shape-rendering: crispEdges;
+		}
+
+		div.tooltip {	
+		   /* position: absolute;	*/		
+		    text-align: center;			
+		    width: 60px;					
+		    height: 28px;					
+		    padding: 2px;				
+		    font: 12px sans-serif;		
+		    background: lightsteelblue;	
+		    border: 0px;		
+		    border-radius: 8px;			
+		    pointer-events: none;			
+		}
+body {
+  font: 12px Arial;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  padding: 0.25rem;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+tbody tr:nth-child(odd) {
+  background: #eee;
+}

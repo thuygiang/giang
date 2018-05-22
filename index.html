@@ -16,77 +16,140 @@
 	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<link rel="stylesheet" href="style.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+  <!-- 	<link rel="stylesheet" href="signIn.css">
+  	<script src="signIn.html"></script>
+  	<script src="signUp.html"></script> -->
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
 
 	<style>
 		
-
-		body { font: 12px Arial;}
-
-		path { 
-		    stroke: steelblue;
-		    stroke-width: 2;
-		    fill: none;
-		}
-
-		.axis path,
-		.axis line {
-		    fill: none;
-		    stroke: grey;
-		    stroke-width: 1;
-		    shape-rendering: crispEdges;
-		}
-
-		div.tooltip {	
-		    position: absolute;			
-		    text-align: center;			
-		    width: 60px;					
-		    height: 28px;					
-		    padding: 2px;				
-		    font: 12px sans-serif;		
-		    background: lightsteelblue;	
-		    border: 0px;		
-		    border-radius: 8px;			
-		    pointer-events: none;			
-		}
-		
-		 
 	</style>
   </head>
   <body>
   <script type="text/javascript" src="scatterchart.js"></script>
-  <div class="container">
+
+
+  <nav class="navbar navbar-inverse">
+  	<div class="container-fluid">
+  		<div class="nav-bar header">
+  			<!-- <button type="button" class="nav-bar toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+  				<span class="sr-only">Toggle navigation</span>
+  				<span class="icon-bar"></span>
+  				<span class="icon-bar"></span>
+  				<span class="icon-bar"></span>
+			</button> -->
+			<a class="navbar-brand" href="#">HCMUS</a>
+		</div>		
+  	
+
+
+
+  		<ul class="nav navbar-nav navbar-right">
+  			<li><a href="index.html">HOME</a></li>
+  			<li class="dropdown">
+  				<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account<span class="caret"></span></a>
+  				<ul class="dropdown-menu">
+  				<li><a href="#">Action</a></li>
+  				<li><a href="#">Another action</a></li>
+  				<li><a href="#">Something else here</a></li>
+  				<li role="separator" class="divider"></li>
+  				<li><a href="#">Separated link</a></li>
+  			</ul>
+  		</li>
+  		</ul>
+  		<ul class="nav navbar-nav narbar-right">
+  			<li><a href="signUp.html">Sign Up</a></li>
+  			<li><a href="signIn.html">Sign In</a></li>
+  		</ul>
+  			
+  	</div>						
+	</div>
+  </nav>
+
+ 
+
+  <div class="container-fluid">
 	<div class="row">
-	  <div class="col-sm-4">aaaaaaaaaaaaa</div>
+	  <div class="col-sm-4">
+	  	<div style="text-align: center;  padding-top: 100px">
+	  	<h3 style="padding-bottom: 10px;">THÔNG SỐ MÔI TRƯỜNG</h3>
+
+	 	<div style="padding-top: 10px ">
+	  	<table class="zebra">
+	  		<tr>
+	  			<td>Humidity</td>
+	  			<td>data1.0</td>
+	  			<!-- <td>data1.1</td>
+	  			<td>data1.2</td>
+	  			<td>data1.3</td> -->
+	  		</tr>
+	  		<tr>
+	  			<td>Light</td>
+	  			<td>data2.0</td>
+	  			<!-- <td>data2.1</td>
+	  			<td>data2.2</td>
+	  			<td>data2.3</td>
+	  		</tr> -->
+	  		<tr>
+	  			<td> Air Temperature</td>
+	  			<td>data3.0</td>
+	  			<!-- <td>data3.1</td>
+	  			<td>data3.2</td>
+	  			<td>data3.3</td> -->
+	  		</tr>
+	  		<tr>
+	  			<td>Water Temperature</td>
+	  			<td>data4.0</td>
+	  			<!-- <td>data4.1</td>
+	  			<td>data4.2</td>
+	  			<td>data4.3</td> -->
+	  		</tr>
+	  		<tr>
+	  			<td>Water Flow</td>
+	  			<td>data5.0</td>
+	  			<!-- <td>data5.1</td>
+	  			<td>data5.2</td>
+	  			<td>data5.3</td> -->
+	  		</tr>
+	  	</table>
+	  	</div>					
+	  </div>
+	  </div>
 	  <div class="col-sm-8">
 
-				  <h2>Dynamic Tabs</h2>
+				  <h2>TEN DE TAI</h2>
 				  <ul class="nav nav-tabs">
-				    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-				    <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
-				    <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-				    <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+				    <li class="active"><a data-toggle="tab" href="#humidity">Humidity</a></li>
+				    <li><a data-toggle="tab" href="#light">Light</a></li>
+				    <li><a data-toggle="tab" href="#airtemperature">Air Temperature</a></li>
+				    <li><a data-toggle="tab" href="#watertemperature">Water Temperature</a></li>
+				    <li><a data-toggle="tab" href="#waterflow">Water Flow</a></li>
 				  </ul>
 
 					  <div class="tab-content">
-					    <div id="home" class="tab-pane fade in active">
+					    <div id="humidity" class="tab-pane fade in active">
 					      
 					    </div>
-					    <div id="menu1" class="tab-pane fade">
+					    <div id="light" class="tab-pane fade">
 					      
 					    </div>
-					    <div id="menu2" class="tab-pane fade">
-					      <h3>Menu 2</h3>
-					      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+					    <div id="airtemperature" class="tab-pane fade">
+					      
 					    </div>
-					    <div id="menu3" class="tab-pane fade">
-					      <h3>Menu 3</h3>
-					      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+					    <div id="watertemperature" class="tab-pane fade">
+					   
 					    </div>
-					  </div>
+					    <div id="waterflow" class="tab-pan fade">
+					  	
+					  	</div>
 		</div>
 	</div>
-	</div>
-  </body>
-</html
+  </div>
+</body>
+</html>

@@ -1,33 +1,49 @@
 // data that you want to plot, I've used separate arrays for x and y values
 
-function getAveragePressure(cityName, dateTime, appId) {
-  url = 'http://api.openweathermap.org/pollution/v1/co/' + cityName + '/' + dateTime + '.json';
+// web: node server.js
+
+// function getAveragePressure(cityName, dateTime, appId) {
+//   url = 'http://api.openweathermap.org/pollution/v1/co/' + cityName + '/' + dateTime + '.json';
   
-  axios.get(url, {
-    params: {
-      appid: appId
-    }
-  })
-  .then(function(response) {
+//   axios.get(url, {
+//     params: {
+//       appid: appId
+//     }
+//   })
+//   .then(function(response) {
     
-    var data = response.data.data.slice(0,10);
+//     var data = response.data.data.slice(0,10);
 
-    console.log(data);
+//     console.log(data);
 
+function getField(arr, field) {
 
-    var maxDay = data.length;
+  return arr.map( function(elem) {
+      return elem[field];
+  });
 
-    var maxTemp = data[0].value;
+}
 
-    for (i=0; i<data.length; i++) {
-      if(data[i].value > maxTemp)
-        maxTemp = data[i].value;
-    }
+function arrayMax(arr) {
+  return arr.reduce(function (x, y) {
+    return Math.max(x, y);
+  })
+}
 
-    console.log(maxDay);
-    console.log(maxTemp);
+function arrayMin(arr) {
+  return arr.reduce(function (x, y) {
+    return Math.min(x, y);
+  })
+}
 
-  
+function render(tabId, data) {
+   var maxIndex = data.length;
+
+    var maxValue = arrayMax(data);
+
+    console.log(maxIndex);
+    console.log(maxValue);
+
     var formatTime = d3.time.format("%e %B");
 
     // size and margins for the chart
@@ -38,16 +54,16 @@ function getAveragePressure(cityName, dateTime, appId) {
     // x and y scales, I've used linear here but there are other options
     // the scales translate data values to pixel values for you
     var x = d3.scale.linear()
-              .domain([0, maxDay])  // the range of the values to plot
+              .domain([0, maxIndex])  // the range of the values to plot
               .range([ 0, width ]);        // the pixel range of the x-axis
 
 
     var y = d3.scale.linear()
-              .domain([0, maxTemp])
+              .domain([0, maxValue])
               .range([ height, 0 ]);
 
     // the chart object, includes all margins
-    var chart = d3.select('#home')
+    var chart = d3.select(tabId)
     .append('svg:svg')
     .attr('width', width + margin.right + margin.left)
     .attr('height', height + margin.top + margin.bottom)
@@ -90,7 +106,7 @@ function getAveragePressure(cityName, dateTime, appId) {
     .call(yAxis);
   
 
-  var tooltip = d3.select("#home")
+  var tooltip = d3.select(tabId)
                   .append("div")
                   .attr('class', 'tooltip')
                   .style("opacity", 0);
@@ -100,7 +116,7 @@ function getAveragePressure(cityName, dateTime, appId) {
   circles.selectAll("scatter-dots")
     .data(data)  // using the values in the ydata array
     .enter().append("svg:circle")  // create a new circle for each value
-        .attr("cy", function (d, i) { return y(d.value); } ) // translate y value to a pixel
+        .attr("cy", function (d, i) { return y(d); } ) // translate y value to a pixel
         .attr("cx", function (d, i) { return x(i); } ) // translate x value
         .attr("r", 5) // radius of circle
         .style("opacity", 0.6) // opacity of circle
@@ -112,10 +128,9 @@ function getAveragePressure(cityName, dateTime, appId) {
                    .duration(200)
                    .style("opacity", .9);
 
-            tooltip.html(i + "</br>"  + Math.round(d.value*100000000000)/10000)
-                   .style("left", (d3.event.pageX) + "px")   
-                   .style("top", (d3.event.pageY - 28) + "px");
-
+            tooltip.html(i + "</br>"  + d)
+                    .style("left", d3.select(this).attr("cx") + "px")     
+                    .style("top", d3.select(this).attr("cy") + "px");
           }).on("mouseout", function (d) {
             tooltip.transition()
                    .duration(500)
@@ -139,18 +154,43 @@ function getAveragePressure(cityName, dateTime, appId) {
                   .attr("y1", currentCircle.attr("cy"))
                   .attr("x2", nextCircle.attr("cx"))
                   .attr("y2", nextCircle.attr("cy"));
-    }
 
-      })
-      .catch(function(err) {
-        console.log(err);
-      }); 
-
+      };
 }
 
 
+function getTemp(appId, num_results) {
+  url = 'https://api.thingspeak.com/channels/441612/feeds.json';
+  axios.get(url, {
+    params: {
+      appid: appId,
+      results: num_results
 
-getAveragePressure('0.0,10.0','current','328e3675bd14abcf0063f7c52ddc80e6');
+    }
+  }).then(function(response) {
+    var data = response.data.feeds;
+    console.log(data);
+
+    var humidity = getField(data, 'field2');
+    console.log(humidity);
+
+    var airtemperature = getField(data, 'field1');
+    console.log(airtemperature);
+
+    render('#humidity', humidity);
+    render('#airtemperature', airtemperature);
+
+     
+
+
+  }).catch(function(err){
+    console.log(err);
+  });
+};
+
+getTemp('C4VRR19CJ4UIW6HP', 10);
+
+// getAveragePressure('0.0,10.0','current','328e3675bd14abcf0063f7c52ddc80e6');
 
 
 

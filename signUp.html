@@ -5,6 +5,7 @@
     <script type="text/javascript" src="http://mbostock.github.com/d3/d3.v2.js" charset="utf-8"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://freetuts.net/cnd/js/vuejs/vue_2.3.4.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <style>
 		    
@@ -61,19 +62,43 @@
   	</div>						
   </nav> 
   <div class="container" style="text-align: center; padding: 50px; width: 500px">
+    <script>
+      $('#form2').submit(function(e){
+        e.preventDefault();
+        console.log(data);
+        userData = {
+            "email": $('#username').val(),
+            "password": $('#password').val()
+         };
+        $.ajax({
+            type: "GET",
+            url: "http://demo-arisite.net:3000/user/create",
+            // data: JSON.stringify(data),
+            data: userData,
+            dataType: "json",
+            contentType: "application/json",
+            success: function(response) {alert('success');},
+            error: function (response, error) {console.log(error)}
+        });
+    });
+    </script>
   	
-  	<form>
+  	<form id="form2">
   		<div class="form-input">
-  			<input type="text" name="email" placeholder="Enter Email">
+  			<input id="username" type="text" name="email" placeholder="Enter Email">
   		</div>
   		<div class="form-input">
-  			<input type="password" name="password" placeholder="Enter Password">
+  			<input id="password" type="password" name="password" placeholder="Enter Password">
   		</div>
       <div class="form-input">
          <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
       </div>
-  		<input type="submit" name="submit" value="SIGN UP" class="btn-signup">
-  	</form><br>
-  	<a href="#">Forget Password?</a>
+  		<button id="send" type="submit" class="btn-signup">SIGN UP</button>
+  	</form>
+    <!-- <script>
+      function formSubmit() {
+        document.getElementById("form2").submit();
+      }
+    </script> -->
 </div>
 </body>

@@ -193,4 +193,3 @@ getTemp('C4VRR19CJ4UIW6HP', 10);
 // getAveragePressure('0.0,10.0','current','328e3675bd14abcf0063f7c52ddc80e6');
 
 
-

@@ -5,6 +5,8 @@
     <script type="text/javascript" src="http://mbostock.github.com/d3/d3.v2.js" charset="utf-8"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://freetuts.net/cnd/js/vuejs/vue_2.3.4.js"></script>
+    <script src="vueApp.js"></script>
+
 
     <style>
 		    
@@ -82,42 +84,58 @@
 
 	 	<div style="padding-top: 10px ">
 	  	<table class="zebra">
+	  		<div v-for="(result, index) in results">
 	  		<tr>
 	  			<td>Humidity</td>
-	  			<td>data1.0</td>
-	  			<!-- <td>data1.1</td>
-	  			<td>data1.2</td>
-	  			<td>data1.3</td> -->
+	  			<td>
+	  				<div id="app-1">
+	  					<p>{{ data_1 }}</p>
+	  				</div>
+	  			</td>
+	  			
 	  		</tr>
 	  		<tr>
 	  			<td>Light</td>
-	  			<td>data2.0</td>
-	  			<!-- <td>data2.1</td>
-	  			<td>data2.2</td>
-	  			<td>data2.3</td>
-	  		</tr> -->
+	  			<td>
+	  				<div id="app-2">
+	  					<p>{{ data_2 }}</p>
+	  				</div>
+	  			</td>
+	  			
 	  		<tr>
 	  			<td> Air Temperature</td>
-	  			<td>data3.0</td>
-	  			<!-- <td>data3.1</td>
-	  			<td>data3.2</td>
-	  			<td>data3.3</td> -->
+	  			<td>
+	  				<!-- <div id="app-3">
+	  					<p>{{ data_3 }}</p>
+	  				</div> -->
+	  			</td>
+	  			
 	  		</tr>
 	  		<tr>
 	  			<td>Water Temperature</td>
-	  			<td>data4.0</td>
-	  			<!-- <td>data4.1</td>
-	  			<td>data4.2</td>
-	  			<td>data4.3</td> -->
+	  			<td>
+	  				<!-- <div id="app-4">
+	  					<p>{{ data_4 }}</p>
+	  				</div> -->
+	  			</td>
+	  			
 	  		</tr>
 	  		<tr>
 	  			<td>Water Flow</td>
-	  			<td>data5.0</td>
-	  			<!-- <td>data5.1</td>
-	  			<td>data5.2</td>
-	  			<td>data5.3</td> -->
+	  			<td>
+	  				<!-- <div id="app-5">
+	  					<p>{{ data_5 }}</p>
+	  				</div> -->
+	  			</td>
+	  			
 	  		</tr>
 	  	</table>
+	  	<!-- <script>
+	  		const vm = new Vue({
+	  			el: '#app',
+	  			data: { field1: 31.00}
+	  		});
+	  	</script> -->
 	  	</div>					
 	  </div>
 	  </div>

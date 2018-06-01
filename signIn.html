@@ -63,25 +63,6 @@
   </nav> 
   <div >
   <div class="container" style="text-align: center; padding: 50px; width: 500px">
-  	 <script>
-      $('#send').click(function(e){
-        e.preventDefault();
-        data = {
-            "email": $('#username').val(),
-            "password": $('#password').val()
-         };
-        $.ajax({
-            type: "GET",
-            url: "http://demo-arisite.net:3000/user/create",
-            data: JSON.stringify(data),
-            dataType: "json",
-            contentType: "application/json",
-            success: function(data) {console.log(data)},
-            error: function (rs, e) {console.debug(rs)}
-        });
-    });
-    </script>
-  	
   	<form id="form1">
   		<div class="form-input">
   
@@ -93,10 +74,39 @@
   		</div>
   		<input type="submit" name="submit" value="SIGN IN" class="btn-signin">
   	</form>
-  	<!-- <script>
-  		function formSubmit() {
-  			document.getElementById("form1").submit();
-  		}
-  	</script> -->
+
+  	 <script>
+      $('#form1').submit(function(e){
+        e.preventDefault();
+        userData = {
+            "email": $('#username').val(),
+            "password": $('#password').val()
+         };
+         if(userData.email=='') {
+         	alert("fill please");
+         	return false;
+         			};
+         console.log(userData);
+        $.ajax({
+            type: "get",
+            url: "http://demo-arisite.net:3000/users",
+            data: userData,
+            dataType: "json",
+            contentType: "application/json",
+            success: function(response) {
+                           if(data == 'false') 
+                           {
+                             alert('Không có người dùng');
+                           }else{
+                             $('#content').html(data); 
+                           }
+              return false;},
+           
+            error: function (response, error) {console.log(error)}
+           });
+    });
+
+    </script>
+  	
 </div>
 </body>

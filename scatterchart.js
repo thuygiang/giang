@@ -192,4 +192,72 @@ getTemp('C4VRR19CJ4UIW6HP', 10);
 
 // getAveragePressure('0.0,10.0','current','328e3675bd14abcf0063f7c52ddc80e6');
 
+  // function renderData(tableId, data)
+  //  {  
+   
+  //       document.write(data); 
+  //       window.setTimeout("ShowTime();", 5000);  
+  //   };  
+
+function getHum(api) {
+  url = 'http://demo-arisite.net:3000/sensors';
+  axios.get(url
+  ).then(function(response) {
+    var hum = response.data.hum;
+    console.log(hum);
+
+    // render('#app-1', hum);
+  }).catch(function(err){
+    console.log(err);
+  });
+};
+getHum('http://demo-arisite.net:3000/sensors');
+
+//////////////////////
+function getLight(api) {
+  url = 'http://demo-arisite.net:3000/sensors';
+  axios.get(url
+  ).then(function(response) {
+    var light = response.data.pts;
+    console.log(light);
+    
+    render('#app-2', light);
+
+  }).catch(function(err){
+    console.log(err);
+  });
+};
+getLight('http://demo-arisite.net:3000/sensors');
+
+/////////////////////
+function getAirt(api) {
+  url = 'http://demo-arisite.net:3000/sensors';
+  axios.get(url
+  ).then(function(response) {
+    var airt = response.data.airt;
+    console.log(airt);
+    
+    render('#app-2', light);
+
+  }).catch(function(err){
+    console.log(err);
+  });
+};
+getAirt('http://demo-arisite.net:3000/sensors');
+
+/////////////////////
+function getWatert(api) {
+  url = 'http://demo-arisite.net:3000/sensors';
+  axios.get(url
+  ).then(function(response) {
+    var watert = response.data.watert;
+    console.log(watert);
+    
+    render('#app-2', light);
+
+  }).catch(function(err){
+    console.log(err);
+  });
+};
+getAirt('http://demo-arisite.net:3000/sensors');
 

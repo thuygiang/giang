@@ -1,17 +1,21 @@
-// const url ='https://api.thingspeak.com/channels/441612/feeds.json?results=10';
 
 // window.onload= function () {
+
+// const url ='http://demo-arisite.net:3000/sensors';
+
 // var vm = new Vue({
 // 	  			el: '#app-1',
-// 	  			data: {data_1:getHum('http://demo-arisite.net:3000/sensors')
+// 	  			data: { data_1: 21
 // 	  			}
-// 	  		})
-// }
-// var vm = new Vue({
-// 	  			el: '#app-2',
-// 	  			data: { data_2: 32
-// 	  				}
+
 // 	  		});
+// // var vm = new Vue({
+// // 	  			el: '#app-2',
+// // 	  			data: { data_2: 32
+// // 	  				}
+// // 	  		});
+// }
+
 // var vm = new Vue({
 // 	  			el: '#app-3',
 // 	  			data: {data_3: 31

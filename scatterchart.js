@@ -198,20 +198,23 @@ getTemp('C4VRR19CJ4UIW6HP', 10);
   //       document.write(data); 
   //       window.setTimeout("ShowTime();", 5000);  
   //   };  
-
+var hum1;
 function getHum(api) {
   url = 'http://demo-arisite.net:3000/sensors';
   axios.get(url
   ).then(function(response) {
-    var hum = response.data.hum;
-    console.log(hum);
+    // var hum = response.data.hum;
+    hum1= response.data.hum;
+    console.log(hum1);
 
     // render('#app-1', hum);
   }).catch(function(err){
     console.log(err);
   });
 };
+
 getHum('http://demo-arisite.net:3000/sensors');
+
 
 //////////////////////
 function getLight(api) {
@@ -253,11 +256,13 @@ function getWatert(api) {
     var watert = response.data.watert;
     console.log(watert);
     
-    render('#app-2', light);
+    render('#app-3', light);
 
   }).catch(function(err){
     console.log(err);
   });
 };
 getAirt('http://demo-arisite.net:3000/sensors');
+
+
 

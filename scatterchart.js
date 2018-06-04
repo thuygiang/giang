@@ -204,10 +204,17 @@ function getHum(api) {
   url = 'http://demo-arisite.net:3000/sensors';
   axios.get(url
   ).then(function(response) {
-    var hum = response.data.hum;
-    console.log(hum);
+  //  var hum = response.data.hum;
+   // console.log(hum);
 
-    // render('#app-1', hum);
+    const  app_1 = new Vue({
+      el: '#app_1', 
+      data: { humidity : response.data.hum }
+    });
+
+
+   // console.log(app_1.data.humidity);
+     render('#app_1', app_1.data.humidity);
   }).catch(function(err){
     console.log(err);
   });
@@ -218,54 +225,90 @@ getHum('http://demo-arisite.net:3000/sensors');
 
 
 
-
 //////////////////////
-function getLight(api) {
+function getLight() {
   url = 'http://demo-arisite.net:3000/sensors';
   axios.get(url
   ).then(function(response) {
-    var light = response.data.pts;
-    console.log(light);
-    
-    render('#app-2', light);
 
+
+    const  app_2 = new Vue({
+      el: '#app_2', 
+      data: { light : response.data.pts }
+    });
+
+
+   // console.log(app_1.data.humidity);
+     render('#app_1', app_2.data.light);
   }).catch(function(err){
     console.log(err);
   });
 };
-getLight('http://demo-arisite.net:3000/sensors');
+getLight();
 
 /////////////////////
-function getAirt(api) {
+function getAirt() {
   url = 'http://demo-arisite.net:3000/sensors';
   axios.get(url
   ).then(function(response) {
-    var airt = response.data.airt;
-    console.log(airt);
-    
-    render('#app-2', light);
 
+    const  app_3 = new Vue({
+      el: '#app_3', 
+      data: { airt : response.data.airt }
+    });
+
+
+   // console.log(app_1.data.humidity);
+     render('#app_3', app_3.data.airt);
   }).catch(function(err){
     console.log(err);
   });
 };
-getAirt('http://demo-arisite.net:3000/sensors');
+getAirt();
 
 /////////////////////
-function getWatert(api) {
+function getWatert() {
   url = 'http://demo-arisite.net:3000/sensors';
   axios.get(url
   ).then(function(response) {
-    var watert = response.data.watert;
-    console.log(watert);
-    
-    render('#app-3', light);
 
+
+    const  app_4 = new Vue({
+      el: '#app_4', 
+      data: { watert : response.data.watert }
+    });
+
+
+   // console.log(app_1.data.humidity);
+     render('#app_4', app_4.data.watert);
   }).catch(function(err){
     console.log(err);
   });
 };
-getAirt('http://demo-arisite.net:3000/sensors');
+getWatert();
+
+function getWaterf() {
+  url = 'http://demo-arisite.net:3000/sensors';
+  axios.get(url
+  ).then(function(response) {
 
 
+    const  app_5 = new Vue({
+      el: '#app_5', 
+      data: { waterf : response.data.waterf }
+    });
+
+
+   // console.log(app_1.data.humidity);
+     render('#app_5', app_5.data.waterf);
+  }).catch(function(err){
+    console.log(err);
+  });
+};
+getWaterf();
+// window.onload=function() { 
+
+  
+
+//  };
 

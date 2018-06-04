@@ -94,11 +94,11 @@
             dataType: "json",
             contentType: "application/json",
             success: function(response) {
-                           if(data == 'false') 
+                           if(response.data == 'false') 
                            {
-                             alert('Không có người dùng');
+                             alert("Không có người dùng");
                            }else{
-                             $('#content').html(data); 
+                             $('#content').html(response.data); 
                            }
               return false;},
            

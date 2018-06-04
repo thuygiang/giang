@@ -28,10 +28,6 @@
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
-
-	<style>
-		
-	</style>
   </head>
   <body>
   <script type="text/javascript" src="scatterchart.js"></script>
@@ -86,8 +82,8 @@
 	  		<tr>
 	  			<td>Humidity</td>
 	  			<td>
-	  				<div id="app-1">
-	  					<p>{{ data_1 }}</p>
+	  				<div id="app_1">
+	  					{{ humidity }}
 	  				</div>
 	  			</td>
 	  			
@@ -95,16 +91,16 @@
 	  		<tr>
 	  			<td>Light</td>
 	  			<td>
-	  				<div id="app-2">
-	  					<p>{{ data_2 }}</p>
+	  				<div id="app_2">
+	  					<p>{{ light }}</p>
 	  				</div>
 	  			</td>
 	  			
 	  		<tr>
 	  			<td> Air Temperature</td>
 	  			<td>
-	  				<div id="app-3">
-	  					<p>{{ data_3 }}</p>
+	  				<div id="app_3">
+	  					<p>{{ airt }}</p>
 	  				</div>
 	  			</td>
 	  			
@@ -112,8 +108,8 @@
 	  		<tr>
 	  			<td>Water Temperature</td>
 	  			<td>
-	  				<div id="app-4">
-	  					<p>{{ data_4 }}</p>
+	  				<div id="app_4">
+	  					<p>{{ watert }}</p>
 	  				</div>
 	  			</td>
 	  			
@@ -121,9 +117,9 @@
 	  		<tr>
 	  			<td>Water Flow</td>
 	  			<td>
-	  				<!-- <div id="app-5">
-	  					<p>{{ data_5 }}</p>
-	  				</div> -->
+	  				<div id="app_5">
+	  					<p>{{ waterf }}</p>
+	  				</div>
 	  			</td>
 	  			
 	  		</tr>

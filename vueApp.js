@@ -51,8 +51,8 @@
 // window.onload=function() { 
 // 	var vm = new Vue({
 // 			el: '#app-1', 
-// 			data: { data_1: qui.hum
+// 			data: { data_1: hum
 // 			}
 // 		});
 
-// };
+//  };

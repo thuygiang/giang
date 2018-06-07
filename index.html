@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -5,8 +7,7 @@
     <script type="text/javascript" src="http://mbostock.github.com/d3/d3.v2.js" charset="utf-8"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://freetuts.net/cnd/js/vuejs/vue_2.3.4.js"></script>
-    <script src="vueApp.js"></script>
-
+    <script type="text/javascript" src="vueApp.js"></script>
 
     <style>
 		    
@@ -22,17 +23,32 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="style.css">
-  <!-- 	<link rel="stylesheet" href="signIn.css">
-  	<script src="signIn.html"></script>
-  	<script src="signUp.html"></script> -->
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  	
+  	 <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+     <script src="http://d3js.org/d3.v3.js"></script>
+     <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script> -->
 
   </head>
   <body>
   <script type="text/javascript" src="scatterchart.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script type="text/javascript" src="jquery.cookie.js"></script>
 
 
+<script type="text/javascript">
+	if(sessionStorage.getItem("start") != 'true') {
+		window.location = 'signIn.html';
+	}
+	else {
+
+		$('#ab').html('Username: <b>' + sessionStorage.getItem("email")+'</b>');
+	}
+</script>
+<script type="text/javascript">
+    // window.location.href = 'file:///C:/Users/admin/Desktop/simplechart/signIn.html';
+</script>
   <nav class="navbar navbar-inverse">
   	<div class="container-fluid">
   		<div class="nav-bar header">
@@ -42,7 +58,7 @@
   				<span class="icon-bar"></span>
   				<span class="icon-bar"></span>
 			</button> -->
-			<a class="navbar-brand" href="#">HCMUS</a>
+			<a class="navbar-brand">HCMUS</a>
 		</div>		
   	
 
@@ -52,18 +68,18 @@
   			<li class="dropdown">
   				<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account<span class="caret"></span></a>
   				<ul class="dropdown-menu">
-  				<li><a href="#">Action</a></li>
-  				<li><a href="#">Another action</a></li>
-  				<li><a href="#">Something else here</a></li>
+  				<li ><a id='ab'></a></li>
+  				<!-- <li><a href="#">Another action</a></li>
+  				<li><a href="#">Something else here</a></li> -->
   				<li role="separator" class="divider"></li>
-  				<li><a href="#">Separated link</a></li>
+  				<li><a href="signIn.html">Log out</a></li>
   			</ul>
   		</li>
   		</ul>
-  		<ul class="nav navbar-nav narbar-right">
+  		<!-- <ul class="nav navbar-nav narbar-right">
   			<li><a href="signUp.html">Sign Up</a></li>
   			<li><a href="signIn.html">Sign In</a></li>
-  		</ul>
+  		</ul> -->
   			
   	</div>						
 	</div>
@@ -135,18 +151,54 @@
 	  </div>
 	  <div class="col-sm-8">
 
-				  <h2>TEN DE TAI</h2>
-				  <ul class="nav nav-tabs">
-				    <li class="active"><a data-toggle="tab" href="#humidity">Humidity</a></li>
+				  <h2>AUTO IRRIGATION</h2>
+		<div class="tabbable">
+            <ul class="nav nav-tabs">
+                <li class="active"><a class="Humidity" href="#humidity" data-toggle="tab">Humidity</a></li>
+                <li><a class="Light" href="#light" data-toggle="tab">Light</a></li>
+                <li><a class="Airtemperature" href="#airtemperature" data-toggle="tab">Air temp</a></li>
+                <li><a class="Watertemperature" href="#watertemperature" data-toggle="tab">Water temp</a></li>
+                <li><a class="Waterflow" href="#waterflow" data-toggle="tab">Water flow</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="humidity">
+                    
+                    <acontent></acontent>
+                </div>
+                <div class="tab-pane" id="light">
+                    
+                    
+
+                </div>
+                <div class="tab-pane active" id="airtemperature">
+                    
+                	<bcontent></bcontent>
+                </div>
+				<div class="tab-pane active" id="watertemperature">
+                    
+                    
+                </div>
+                <div class="tab-pane active" id="waterflow">
+                    
+                    
+                </div>
+            </div>
+        </div>
+
+<!-- 				  <ul class="nav nav-tabs">
+				    <li class="active"><a data-toggle="tab" href="#humidity">Humidity</a>
+
+
+				    </li>
 				    <li><a data-toggle="tab" href="#light">Light</a></li>
 				    <li><a data-toggle="tab" href="#airtemperature">Air Temperature</a></li>
 				    <li><a data-toggle="tab" href="#watertemperature">Water Temperature</a></li>
 				    <li><a data-toggle="tab" href="#waterflow">Water Flow</a></li>
 				  </ul>
 
-					  <div class="tab-content">
+					 <div class="tab-content">
 					    <div id="humidity" class="tab-pane fade in active">
-					      
+
 					    </div>
 					    <div id="light" class="tab-pane fade">
 					      
@@ -160,8 +212,18 @@
 					    <div id="waterflow" class="tab-pan fade">
 					  	
 					  	</div>
+					</div> -->
 		</div>
-	</div>
   </div>
 </body>
+
+<script type="text/javascript">
+	if(sessionStorage.getItem("start") != 'true') {
+		window.location = 'signIn.html';
+	}
+	else {
+
+		$('#ab').html('Username: <b>' + sessionStorage.getItem("email")+'</b>');
+	}
+</script>
 </html>

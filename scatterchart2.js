@@ -344,19 +344,19 @@ function getHumn(num_results, field) {
 
    
     if(field == 'hum') {
-	    render('#humidity1', getField(data, field));
+	    render('#humidity2', getField(data, field));
     }
 	else if(field == 'airt') {
-		render('#airtemperature1', getField(data, field));
+		render('#airtemperature2', getField(data, field));
 	}
 	else if(field == 'pts') {
-		render('#light1', getField(data, field));
+		render('#light2', getField(data, field));
 	}
 	else if(field == 'watert') {
-		render('#watertemperature1', getField(data, field));
+		render('#watertemperature2', getField(data, field));
 	}
 	else if(field == 'waterf') {
-		render('#waterflow1', getField(data, field));
+		render('#waterflow2', getField(data, field));
 	}
 
   }).catch(function(err){
@@ -520,72 +520,72 @@ var watert = document.querySelector('li.Watertemperature');
 var waterf = document.querySelector('li.Waterflow');
 
 hum.addEventListener('click', function(){
-	document.querySelector('#airtemperature1').innerHTML = '';
-	document.querySelector('#airtemperature1').className = 'tab-pane';
-	document.querySelector('#light1').innerHTML = '';
-	document.querySelector('#light1').className = 'tab-pane';
-	document.querySelector('#watertemperature1').innerHTML = '';
-	document.querySelector('#watertemperature1').className = 'tab-pane';
-	document.querySelector('#waterflow1').innerHTML = '';
-	document.querySelector('#waterflow1').className = 'tab-pane';
-	document.querySelector('#humidity1').className = 'tab-pane active';
+	document.querySelector('#airtemperature2').innerHTML = '';
+	document.querySelector('#airtemperature2').className = 'tab-pane';
+	document.querySelector('#light2').innerHTML = '';
+	document.querySelector('#light2').className = 'tab-pane';
+	document.querySelector('#watertemperature2').innerHTML = '';
+	document.querySelector('#watertemperature2').className = 'tab-pane';
+	document.querySelector('#waterflow2').innerHTML = '';
+	document.querySelector('#waterflow2').className = 'tab-pane';
+	document.querySelector('#humidity2').className = 'tab-pane active';
 	console.log('Humidity');
 	getHumn(10, 'hum');
 
 });
 
 airt.addEventListener('click', function(){
-	document.querySelector('#humidity1').innerHTML = '';
-	document.querySelector('#humidity1').className = 'tab-pane ';
-	document.querySelector('#light1').innerHTML = '';
-	document.querySelector('#light1').className = 'tab-pane';
-	document.querySelector('#watertemperature1').innerHTML = '';
-	document.querySelector('#watertemperature1').className = 'tab-pane';
-	document.querySelector('#waterflow1').innerHTML = '';
-	document.querySelector('#waterflow1').className = 'tab-pane';
-	document.querySelector('#airtemperature1').className = 'tab-pane active';
+	document.querySelector('#humidity2').innerHTML = '';
+	document.querySelector('#humidity2').className = 'tab-pane ';
+	document.querySelector('#light2').innerHTML = '';
+	document.querySelector('#light2').className = 'tab-pane';
+	document.querySelector('#watertemperature2').innerHTML = '';
+	document.querySelector('#watertemperature2').className = 'tab-pane';
+	document.querySelector('#waterflow2').innerHTML = '';
+	document.querySelector('#waterflow2').className = 'tab-pane';
+	document.querySelector('#airtemperature2').className = 'tab-pane active';
 	getHumn(10 ,'airt');
 	
 });
 
 light.addEventListener('click', function(){
-	document.querySelector('#humidity1').innerHTML = '';
-	document.querySelector('#humidity1').className = 'tab-pane ';
-	document.querySelector('#airtemperature1').innerHTML = '';
-	document.querySelector('#airtemperature1').className = 'tab-pane';
-	document.querySelector('#watertemperature1').innerHTML = '';
-	document.querySelector('#watertemperature1').className = 'tab-pane';
-	document.querySelector('#waterflow1').innerHTML = '';
-	document.querySelector('#waterflow1').className = 'tab-pane';
-	document.querySelector('#light1').className = 'tab-pane active';
+	document.querySelector('#humidity2').innerHTML = '';
+	document.querySelector('#humidity2').className = 'tab-pane ';
+	document.querySelector('#airtemperature2').innerHTML = '';
+	document.querySelector('#airtemperature2').className = 'tab-pane';
+	document.querySelector('#watertemperature2').innerHTML = '';
+	document.querySelector('#watertemperature2').className = 'tab-pane';
+	document.querySelector('#waterflow2').innerHTML = '';
+	document.querySelector('#waterflow2').className = 'tab-pane';
+	document.querySelector('#light2').className = 'tab-pane active';
 	getHumn(10 ,'pts');
 	
 });
 
 watert.addEventListener('click', function(){
-	document.querySelector('#humidity1').innerHTML = '';
-	document.querySelector('#humidity1').className = 'tab-pane ';
-	document.querySelector('#airtemperature1').innerHTML = '';
-	document.querySelector('#airtemperature1').className = 'tab-pane';
-	document.querySelector('#light1').innerHTML = '';
-	document.querySelector('#light1').className = 'tab-pane';
-	document.querySelector('#waterflow1').innerHTML = '';
-	document.querySelector('#waterflow1').className = 'tab-pane';
-	document.querySelector('#watertemperature1').className = 'tab-pane active';
+	document.querySelector('#humidity2').innerHTML = '';
+	document.querySelector('#humidity2').className = 'tab-pane ';
+	document.querySelector('#airtemperature2').innerHTML = '';
+	document.querySelector('#airtemperature2').className = 'tab-pane';
+	document.querySelector('#light2').innerHTML = '';
+	document.querySelector('#light2').className = 'tab-pane';
+	document.querySelector('#waterflow2').innerHTML = '';
+	document.querySelector('#waterflow2').className = 'tab-pane';
+	document.querySelector('#watertemperature2').className = 'tab-pane active';
 	getHumn(10 ,'watert');
 	
 });
 
 waterf.addEventListener('click', function(){
-	document.querySelector('#humidity1').innerHTML = '';
-	document.querySelector('#humidity1').className = 'tab-pane ';
-	document.querySelector('#airtemperature1').innerHTML = '';
-	document.querySelector('#airtemperature1').className = 'tab-pane';
-	document.querySelector('#light1').innerHTML = '';
-	document.querySelector('#light1').className = 'tab-pane';
-	document.querySelector('#watertemperature1').innerHTML = '';
-	document.querySelector('#watertemperature1').className = 'tab-pane';
-	document.querySelector('#waterflow1').className = 'tab-pane active';
+	document.querySelector('#humidity2').innerHTML = '';
+	document.querySelector('#humidity2').className = 'tab-pane ';
+	document.querySelector('#airtemperature2').innerHTML = '';
+	document.querySelector('#airtemperature2').className = 'tab-pane';
+	document.querySelector('#light2').innerHTML = '';
+	document.querySelector('#light2').className = 'tab-pane';
+	document.querySelector('#watertemperature2').innerHTML = '';
+	document.querySelector('#watertemperature2').className = 'tab-pane';
+	document.querySelector('#waterflow2').className = 'tab-pane active';
 	getHumn(10 ,'waterf');
-	console.log(10, 'waterf');
+	
 });

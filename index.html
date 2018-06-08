@@ -32,7 +32,6 @@
 
   </head>
   <body>
-  <script type="text/javascript" src="scatterchart.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script type="text/javascript" src="jquery.cookie.js"></script>
 
@@ -154,31 +153,28 @@
 				  <h2>AUTO IRRIGATION</h2>
 		<div class="tabbable">
             <ul class="nav nav-tabs">
-                <li class="active"><a class="Humidity" href="#humidity" data-toggle="tab">Humidity</a></li>
-                <li><a class="Light" href="#light" data-toggle="tab">Light</a></li>
-                <li><a class="Airtemperature" href="#airtemperature" data-toggle="tab">Air temp</a></li>
-                <li><a class="Watertemperature" href="#watertemperature" data-toggle="tab">Water temp</a></li>
-                <li><a class="Waterflow" href="#waterflow" data-toggle="tab">Water flow</a></li>
+                <li class="active Humidity"><a class="Humidity" href="#humidity" data-toggle="tab">Humidity</a></li>
+                <li class="Light"><a class="Light" href="#light" data-toggle="tab">Light</a></li>
+                <li class="Airtemperature"><a class="Airtemperature" href="#airtemperature" data-toggle="tab">Air temp</a></li>
+                <li class="Watertemperature"><a class="Watertemperature" href="#watertemperature" data-toggle="tab">Water temp</a></li>
+                <li class="Waterflow"><a class="Waterflow" href="#waterflow" data-toggle="tab">Water flow</a></li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane active" id="humidity">
+                <div class="tab-pane active" id="humidity1">
                     
-                    <acontent></acontent>
                 </div>
-                <div class="tab-pane" id="light">
+                <div class="tab-pane" id="light1">
                     
-                    
-
                 </div>
-                <div class="tab-pane active" id="airtemperature">
+                <div class="tab-pane " id="airtemperature1">
                     
-                	<bcontent></bcontent>
+                	
                 </div>
-				<div class="tab-pane active" id="watertemperature">
+				<div class="tab-pane " id="watertemperature1">
                     
                     
                 </div>
-                <div class="tab-pane active" id="waterflow">
+                <div class="tab-pane " id="waterflow1">
                     
                     
                 </div>
@@ -225,5 +221,8 @@
 
 		$('#ab').html('Username: <b>' + sessionStorage.getItem("email")+'</b>');
 	}
+
 </script>
+
+  <script type="text/javascript" src="scatterchart.js"></script>
 </html>

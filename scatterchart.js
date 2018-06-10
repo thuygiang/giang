@@ -367,7 +367,7 @@ function getHumn(num_results, field) {
 
 
 /////////////////////////////////////////////
-function getLight() {
+  function getLight() {
   url = 'http://demo-arisite.net:3000/sensors';
   axios.get(url
   ).then(function(response) {
@@ -385,7 +385,10 @@ function getLight() {
     console.log(err);
   });
 };
-getLight();
+//getLight();
+setInterval(getLight(),30*1000);
+//console.log(pts);
+
 
 
 //////////////////////////////////////////////////
@@ -420,7 +423,8 @@ getLight();
 
 
 ///////////////////////////////////
-function getHum() {
+
+  function getHum() {
   url = 'http://demo-arisite.net:3000/sensors';
   axios.get(url
   ).then(function(response) {
@@ -429,16 +433,18 @@ function getHum() {
       el: '#app_1', 
       data: { humidity : response.data.hum }
     });
+  //console.log(hum);
   }).catch(function(err){
     console.log(err);
   });
+
 };
 
-getHum('http://demo-arisite.net:3000/sensors');
+//getHum();
 
 
-
-
+setInterval(getHum(),30*1000);
+//console.log(hum);
 //////////////////////
 // function getLight() {
 //   url = 'http://demo-arisite.net:3000/sensors';
@@ -461,7 +467,7 @@ getHum('http://demo-arisite.net:3000/sensors');
 // getLight();
 
 // /////////////////////
-function getAirt() {
+  function getAirt() {
   url = 'http://demo-arisite.net:3000/sensors';
   axios.get(url
   ).then(function(response) {
@@ -474,10 +480,13 @@ function getAirt() {
     console.log(err);
   });
 };
-getAirt();
+//getAirt();
 
+
+setInterval(getAirt(),30*1000);
+//console.log(airt);
 // /////////////////////
-function getWatert() {
+  function getWatert() {
   url = 'http://demo-arisite.net:3000/sensors';
   axios.get(url
   ).then(function(response) {
@@ -492,9 +501,12 @@ function getWatert() {
     console.log(err);
   });
 };
-getWatert();
+//getWatert();
+
+setInterval(getWatert(),30*1000);
+//console.log(watert);
 /////////////////////////////////////////
-function getWaterf() {
+  function getWaterf() {
   url = 'http://demo-arisite.net:3000/sensors';
   axios.get(url
   ).then(function(response) {
@@ -509,7 +521,10 @@ function getWaterf() {
     console.log(err);
   });
 };
-getWaterf();
+//getWaterf();
+
+setInterval(getWaterf(),30*1000);
+// console.log(waterf);
 ///////////////////////////////////
 
 
@@ -587,5 +602,6 @@ waterf.addEventListener('click', function(){
 	document.querySelector('#watertemperature1').className = 'tab-pane';
 	document.querySelector('#waterflow1').className = 'tab-pane active';
 	getHumn(10 ,'waterf');
-	console.log(10, 'waterf');
 });
+
+

@@ -367,149 +367,145 @@ function getHumn(num_results, field) {
 
 
 /////////////////////////////////////////////
-function getLight() {
+const app_2 = new Vue({
+      el : "#app_2", 
+      data  :{ 
+          light: 0, 
+       },
+      create: function () {
+        this.getLight();
+      },
+      methods: {
+         getLight: function() {
   url = 'http://demo-arisite.net:3000/sensors';
+   var app=this;
   axios.get(url
   ).then(function(response) {
-
-
-    const  app_2 = new Vue({
-      el: '#app_2', 
-      data: { light : response.data.pts }
-    });
-
-
-   // console.log(app_1.data.humidity);
-    // render('#app_1', app_2.data.light);
-  }).catch(function(err){
+    app.light = response.data.pts;
+    // console.log(this.light); 
+    }).catch(function(err){
     console.log(err);
   });
-};
-getLight();
-
-
-//////////////////////////////////////////////////
-//  function getHumChart() {
-//   var humChart = getField(jsonData,'hum');
-//   render('#humidity',humChart);
-//  };
-
-// getHumChart();
-/////////////////////////////////////////////////
-//   var humChart = getField(jsonData, 'hum');
-//   console.log(humChart);
-// //  d3.select('#humidity').selectAll('svg').remove();
-//   render('#humidity', humChart);
-
-//   var lightChart = getField(jsonData, 'pts');
-//   console.log(lightChart);
-//    render('#light', lightChart);
-
-//   var airtChart = getField(jsonData, 'airt');
-//   console.log(airtChart);
-//    render('#airtemperature', airtChart);
-
-//   var watertChart = getField(jsonData, 'watert');
-//   console.log(watertChart);
-//    render('#watertemperature', watertChart);
-
-//   var waterfChart = getField(jsonData, 'waterf');
-//   console.log(waterfChart);
-//    render('#waterflow', watertChart);
-
+}
+     }
+});
+// console.log(app_2.light);
+setInterval(() => {
+  app_2.getLight();
+},5*1000);
 
 
 ///////////////////////////////////
-function getHum() {
+
+ const app_1 = new Vue({
+      el : "#app_1", 
+      data  :{ 
+          humidity: 0, 
+       },
+      create: function () {
+        this.getHum();
+      },
+      methods: {
+         getHum: function() {
   url = 'http://demo-arisite.net:3000/sensors';
+   var app=this;
   axios.get(url
   ).then(function(response) {
-  
-    const  app_1 = new Vue({
-      el: '#app_1', 
-      data: { humidity : response.data.hum }
-    });
-  }).catch(function(err){
+    app.humidity = response.data.hum;
+    // console.log(this.light); 
+    }).catch(function(err){
     console.log(err);
   });
-};
-
-getHum('http://demo-arisite.net:3000/sensors');
-
-
-
-
-//////////////////////
-// function getLight() {
-//   url = 'http://demo-arisite.net:3000/sensors';
-//   axios.get(url
-//   ).then(function(response) {
-
-
-//     const  app_2 = new Vue({
-//       el: '#app_2', 
-//       data: { light : response.data.pts }
-//     });
-
-
-//    // console.log(app_1.data.humidity);
-//     // render('#app_1', app_2.data.light);
-//   }).catch(function(err){
-//     console.log(err);
-//   });
-// };
-// getLight();
+}
+     }
+});
+// console.log(app_2.light);
+setInterval(() => {
+  app_1.getHum();
+},5*1000);
 
 // /////////////////////
-function getAirt() {
+ const app_3 = new Vue({
+      el : "#app_3", 
+      data  :{ 
+         airt : 0, 
+       },
+      create: function () {
+        this.getAirt();
+      },
+      methods: {
+         getAirt: function() {
   url = 'http://demo-arisite.net:3000/sensors';
+   var app=this;
   axios.get(url
   ).then(function(response) {
-
-    const  app_3 = new Vue({
-      el: '#app_3', 
-      data: { airt : response.data.airt }
-    });
-  }).catch(function(err){
+    app.airt = response.data.airt;
+    // console.log(this.light); 
+    }).catch(function(err){
     console.log(err);
   });
-};
-getAirt();
+}
+     }
+});
+// console.log(app_2.light);
+setInterval(() => {
+  app_3.getAirt();
+},5*1000);
 
 // /////////////////////
-function getWatert() {
+  const app_4 = new Vue({
+      el : "#app_4", 
+      data  :{ 
+         watert : 0, 
+       },
+      create: function () {
+        this.getWatert();
+      },
+      methods: {
+         getWatert: function() {
   url = 'http://demo-arisite.net:3000/sensors';
+   var app=this;
   axios.get(url
   ).then(function(response) {
-
-
-    const  app_4 = new Vue({
-      el: '#app_4', 
-      data: { watert : response.data.watert }
-    });
-
-  }).catch(function(err){
+    app.watert = response.data.watert;
+    // console.log(this.light); 
+    }).catch(function(err){
     console.log(err);
   });
-};
-getWatert();
+}
+     }
+});
+// console.log(app_2.light);
+setInterval(() => {
+  app_4.getWatert();
+},5*1000);
 /////////////////////////////////////////
-function getWaterf() {
+    const app_5 = new Vue({
+      el : "#app_5", 
+      data  :{ 
+         waterf : 0, 
+       },
+      create: function () {
+        this.getWatert();
+      },
+      methods: {
+         getWaterf: function() {
   url = 'http://demo-arisite.net:3000/sensors';
+   var app=this;
   axios.get(url
   ).then(function(response) {
-
-
-    const  app_5 = new Vue({
-      el: '#app_5', 
-      data: { waterf : response.data.waterf }
-    });
-
-  }).catch(function(err){
+    app.waterf = response.data.waterf;
+    // console.log(this.light); 
+    }).catch(function(err){
     console.log(err);
   });
-};
-getWaterf();
+}
+     }
+});
+// console.log(app_2.light);
+setInterval(() => {
+  app_5.getWaterf();
+},5*1000);
 ///////////////////////////////////
 
 

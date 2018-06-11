@@ -93,7 +93,7 @@
 
 	 	<div style="padding-top: 10px ">
 	  	<table class="zebra">
-	  		<div v-for="result in results">
+	  		<div>
 	  		<tr>
 	  			<td>Humidity</td>
 	  			<td>
@@ -107,10 +107,12 @@
 	  			<td>Light</td>
 	  			<td>
 	  				<div id="app_2">
-	  					<p>{{ light }}</p>
+	  					<p>
+	  						<span>{{ light }}
+	  						</span>
+	  					</p>
 	  				</div>
 	  			</td>
-	  			
 	  		<tr>
 	  			<td> Air Temperature</td>
 	  			<td>
@@ -139,12 +141,7 @@
 	  			
 	  		</tr>
 	  	</table>
-	  	<!-- <script>
-	  		const vm = new Vue({
-	  			el: '#app',
-	  			data: { field1: 31.00}
-	  		});
-	  	</script> -->
+	  	
 	  	</div>					
 	  </div>
 	  </div>

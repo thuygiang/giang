@@ -331,7 +331,7 @@ function render(tabId, data) {
 
 
 function getHumn(num_results, field) {
-  url = 'http://demo-arisite.net:3000/sensors/date?year=2018&month=06&date=06';
+  url = 'http://demo-arisite.net:3000/sensors/date?year=2018&month=06&date=10';
   axios.get(url, {
     params: {
      

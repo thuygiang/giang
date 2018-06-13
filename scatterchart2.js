@@ -215,7 +215,7 @@ function render(tabId, data) {
     // console.log(maxIndex);
     // console.log(maxValue);
     // console.log(minValue);
-    var formatTime = d3.time.format("%Y-%m-%d");
+    // var formatTime = d3.time.format("%d/%m");
 
     // size and margins for the chart
     var margin = {top: 50, right: 50, bottom: 50, left: 50}
@@ -229,7 +229,7 @@ function render(tabId, data) {
               .range([ 0, width ]);        // the pixel range of the x-axis
 
 
-    var y = d3.scale.linear()
+    var yy = d3.scale.linear()
               .domain([0, maxValue])
               .range([ height, 0 ]);
 
@@ -250,24 +250,53 @@ function render(tabId, data) {
     function range(start, end) {
       return Array(end - start).join(0).split(0).map(function(val, id) {return id+start;});
     }
+      var nowday = new Date();
+   
+    var d = ("0" + nowday.getDate()).slice(-2);
+   
+    var m = ("0" + (nowday.getMonth()+1)).slice(-2);
+  
+    var y = nowday.getFullYear();
 
+  var arr=[];
+
+  for (var k = 8 ; k >= 0 ; k--)
+  { 
+    // alert(i);
+
+    var d1 = ("0" + new Date(nowday.setDate(d-k)).getDate()).slice(-2);
+    // alert(d1);
+    var m1 = m,y1 = y;
+    if (d1>d){
+      m1=("0" + (nowday.getMonth())).slice(-2);;
+      if(m1<=0){
+        m1=12;
+        y1=y-1;
+        console.log(m1);
+      }
+    }
+
+    arr.push(d1 + '/' + m1);
+     
+   
+  }
     // draw the x axis
-    var xAxis = d3.svg.axis()
+   var xAxis = d3.svg.axis()
     .scale(x)
     .orient('bottom')
     .tickFormat(function (d,i)   {
-
-      return "Ngay" + (i + 1);
+      return arr[d] ;
     });
 
-    main.append('g')
+  main.append('g')
     .attr('transform', 'translate(0,' + height + ')')
     .attr('class', 'main axis date')
     .call(xAxis);
+   
 
     // draw the y axis
     var yAxis = d3.svg.axis()
-    .scale(y)
+    .scale(yy)
     .orient('left');
 
 
@@ -286,7 +315,7 @@ function render(tabId, data) {
   circles.selectAll("scatter-dots")
     .data(data)  // using the values in the ydata array
     .enter().append("svg:circle")  // create a new circle for each value
-        .attr("cy", function (d, i) { return y(d); } ) // translate y value to a pixel
+        .attr("cy", function (d, i) { return yy(d); } ) // translate y value to a pixel
         .attr("cx", function (d, i) { return x(i); } ) // translate x value
         .attr("r", 5) // radius of circle
         .style("opacity", 0.6) // opacity of circle

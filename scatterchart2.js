@@ -210,13 +210,12 @@ function arrayMin(arr) {
 // }
 function render(tabId, data) {
    var maxIndex = data.length;
-
     var maxValue = arrayMax(data);
     var minValue = arrayMin(data);
     // console.log(maxIndex);
     // console.log(maxValue);
     // console.log(minValue);
-    var formatTime = d3.time.format("%e %B");
+    var formatTime = d3.time.format("%Y-%m-%d");
 
     // size and margins for the chart
     var margin = {top: 50, right: 50, bottom: 50, left: 50}
@@ -258,7 +257,7 @@ function render(tabId, data) {
     .orient('bottom')
     .tickFormat(function (d,i)   {
 
-      return "Ngay" + i;
+      return "Ngay" + (i + 1);
     });
 
     main.append('g')
@@ -299,7 +298,7 @@ function render(tabId, data) {
                    .duration(200)
                    .style("opacity", .9);
 
-            tooltip.html(i + "</br>"  + d)
+            tooltip.html(i + "</br>"  + Math.round(d * 1000)/1000)
                     .style("left", d3.select(this).attr("cx") + "px")     
                     .style("top", d3.select(this).attr("cy") + "px");
           }).on("mouseout", function (d) {
@@ -328,42 +327,97 @@ function render(tabId, data) {
 
       };
 }
-
-
-function getHumn(num_results, field) {
-  url = 'http://demo-arisite.net:3000/sensors/date?year=2018&month=06&date=10';
-  axios.get(url, {
-    params: {
-     
-      results: num_results
-
-    }
-  }).then(function(response) {
-
-    var data = response.data;
-
-   
+/////////////////////////////////////////////////////////
+//Ham lay gia tri trung binh cua 1 ngay
+function getHumn(field, datafield) {
+  
+    console.log(datafield);
     if(field == 'hum') {
-	    render('#humidity2', getField(data, field));
+     render('#humidity2',datafield);
     }
-	else if(field == 'airt') {
-		render('#airtemperature2', getField(data, field));
-	}
-	else if(field == 'pts') {
-		render('#light2', getField(data, field));
-	}
-	else if(field == 'watert') {
-		render('#watertemperature2', getField(data, field));
-	}
-	else if(field == 'waterf') {
-		render('#waterflow2', getField(data, field));
-	}
+    else if(field == 'airt') {
+     render('#airtemperature2',datafield);
+     }
+     else if(field == 'pts') {
+     render('#light2', datafield);
+     }
+     else if(field == 'watert') {
+     render('#watertemperature2',datafield);
+     }
+     else if(field == 'waterf') {
+     render('#waterflow2', datafield);
+     }
 
-  }).catch(function(err){
-    console.log(err);
-  });
-}//f1 temp
-//f2 hum
+ }
+// getHumn(2018,6,11,'hum');
+//mang chua gia tri trung binh 8-9 ngay
+async function getArr(field) {
+
+    var nowday = new Date();
+   
+    var d = ("0" + nowday.getDate()).slice(-2);
+   
+    var m = ("0" + (nowday.getMonth()+1)).slice(-2);
+  
+    var y = nowday.getFullYear();
+
+  var arr=[];
+  for (i = 8 ; i >= 0 ; i--)
+  { 
+    // alert(i);
+
+    var d1 = ("0" + new Date(nowday.setDate(d-i)).getDate()).slice(-2);
+    // alert(d1);
+    var m1 = m,y1 = y;
+    if (d1>d){
+      m1=("0" + (nowday.getMonth())).slice(-2);;
+      if(m1<=0){
+        m1=12;
+        y1=y-1;
+        console.log(m1);
+      }
+   }
+
+
+    var datafield = 0;
+    url ='http://demo-arisite.net:3000/sensors/date?' + 'year=' + y1 + '&month=' + m1 + '&date=' + d1;
+    // alert(url);
+    var k = await axios.get(url).then(async function(response) {
+     // var data = response.data
+
+     datafield = getField(response.data,field);
+
+
+      if(datafield.length == 0)
+        return  0;
+      
+      var avr = 0;
+      for(var j=0; j<datafield.length; j++)
+      {
+        avr = avr + datafield[j]
+      }
+      avr = avr / datafield.length;
+      // console.log(avr);
+      return avr;
+    })
+
+    arr.push(k);
+   }
+
+  console.log(arr);
+  getHumn(field, arr);
+  // getHumn('airt', arr);
+  // getHumn('pts', arr);
+  // getHumn('watert', arr);
+  // getHumn('waterf', arr);
+    
+
+
+}
+
+
+
+////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////
@@ -381,15 +435,13 @@ const app_2 = new Vue({
    var app=this;
   axios.get(url
   ).then(function(response) {
-    app.light = response.data.pts;
-    // console.log(this.light); 
+    app.light = response.data.pts; 
     }).catch(function(err){
     console.log(err);
   });
 }
      }
 });
-// console.log(app_2.light);
 setInterval(() => {
   app_2.getLight();
 },5*1000);
@@ -515,7 +567,7 @@ var light = document.querySelector('li.Light');
 var watert = document.querySelector('li.Watertemperature');
 var waterf = document.querySelector('li.Waterflow');
 
-hum.addEventListener('click', function(){
+hum.addEventListener('click', async function(){
 	document.querySelector('#airtemperature2').innerHTML = '';
 	document.querySelector('#airtemperature2').className = 'tab-pane';
 	document.querySelector('#light2').innerHTML = '';
@@ -525,12 +577,16 @@ hum.addEventListener('click', function(){
 	document.querySelector('#waterflow2').innerHTML = '';
 	document.querySelector('#waterflow2').className = 'tab-pane';
 	document.querySelector('#humidity2').className = 'tab-pane active';
-	console.log('Humidity');
-	getHumn(10, 'hum');
+
+  
+getArr('hum');    
+
+  // render('#humidity2', getField(data, field));
+   
 
 });
 
-airt.addEventListener('click', function(){
+airt.addEventListener('click', async function(){
 	document.querySelector('#humidity2').innerHTML = '';
 	document.querySelector('#humidity2').className = 'tab-pane ';
 	document.querySelector('#light2').innerHTML = '';
@@ -540,11 +596,12 @@ airt.addEventListener('click', function(){
 	document.querySelector('#waterflow2').innerHTML = '';
 	document.querySelector('#waterflow2').className = 'tab-pane';
 	document.querySelector('#airtemperature2').className = 'tab-pane active';
-	getHumn(10 ,'airt');
+
+getArr('airt');
 	
 });
 
-light.addEventListener('click', function(){
+light.addEventListener('click', async function(){
 	document.querySelector('#humidity2').innerHTML = '';
 	document.querySelector('#humidity2').className = 'tab-pane ';
 	document.querySelector('#airtemperature2').innerHTML = '';
@@ -554,11 +611,11 @@ light.addEventListener('click', function(){
 	document.querySelector('#waterflow2').innerHTML = '';
 	document.querySelector('#waterflow2').className = 'tab-pane';
 	document.querySelector('#light2').className = 'tab-pane active';
-	getHumn(10 ,'pts');
+	getArr('pts');
 	
 });
 
-watert.addEventListener('click', function(){
+watert.addEventListener('click', async function(){
 	document.querySelector('#humidity2').innerHTML = '';
 	document.querySelector('#humidity2').className = 'tab-pane ';
 	document.querySelector('#airtemperature2').innerHTML = '';
@@ -568,11 +625,11 @@ watert.addEventListener('click', function(){
 	document.querySelector('#waterflow2').innerHTML = '';
 	document.querySelector('#waterflow2').className = 'tab-pane';
 	document.querySelector('#watertemperature2').className = 'tab-pane active';
-	getHumn(10 ,'watert');
+	getArr('watert');
 	
 });
 
-waterf.addEventListener('click', function(){
+waterf.addEventListener('click', async function(){
 	document.querySelector('#humidity2').innerHTML = '';
 	document.querySelector('#humidity2').className = 'tab-pane ';
 	document.querySelector('#airtemperature2').innerHTML = '';
@@ -582,6 +639,6 @@ waterf.addEventListener('click', function(){
 	document.querySelector('#watertemperature2').innerHTML = '';
 	document.querySelector('#watertemperature2').className = 'tab-pane';
 	document.querySelector('#waterflow2').className = 'tab-pane active';
-	getHumn(10 ,'waterf');
+	getArr('waterf');
 	
 });

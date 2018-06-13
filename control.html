@@ -61,41 +61,69 @@
   </div>
   </nav>
 
- <div class="container-fluid">
+
+  <div class="container-fluid">
   <div class="row">
     <div class="col-sm-4">
       <div style="text-align: center;  padding-top: 100px">
       <h3 style="padding-bottom: 10px;">TRẠNG THÁI MÁY BƠM</h3>
-          <div style="padding-top: 10px ">
-            <table class="zebra">
-              <div v-for="result in results">
-              <tr>
-                <td>Pump 1</td>
-                <td>
-                  <div id="pumpcontrol1">
-                    {{ }}
-                  </div>
-                </td>
-                
-              </tr>
-              <tr>
-                <td>Pump 2</td>
-                <td>
-                  <div id="pumcontrol2">
-                    <p>{{ }}</p>
-                  </div>
-                </td>
-              </tr>
-              </div>
-            </table>
-          </div>
-      </div>
+
+    <div style="padding-top: 10px ">
+      <table class="zebra">
+        <div v-for="result in results">
+        <tr>
+          <td>PUMP-1</td>
+          <td>
+            <div id="app_11">
+              {{ ... }}
+            </div>
+          </td>
+          
+        </tr>
+        <tr>
+          <td>PUMP-2</td>
+          <td>
+            <div id="app_22">
+              <p>{{ .... }}</p>
+            </div>
+          </td>
+      </table>
+      </div>          
+    </div>
+    </div>
+    <div class="col-sm-8">
+
+          <h2>AUTO IRRIGATION</h2>
+    <div class="tabbable">
+            <ul class="nav nav-tabs">
+               <!--  <li class="active Humidity"><a class="Humidity" href="#humidity" data-toggle="tab">Humidity</a></li>
+                <li class="Light"><a class="Light" href="#light" data-toggle="tab">Light</a></li>
+                <li class="Airtemperature"><a class="Airtemperature" href="#airtemperature" data-toggle="tab">Air temp</a></li>
+                <li class="Watertemperature"><a class="Watertemperature" href="#watertemperature" data-toggle="tab">Water temp</a></li>
+                <li class="Waterflow"><a class="Waterflow" href="#waterflow" data-toggle="tab">Water flow</a></li> -->
+            </ul>
+           <!--  <div class="tab-content">
+                <div class="tab-pane active" id="humidity2">
+                  
+                </div>
+                <div class="tab-pane" id="light2">
+                    
+                </div>
+                <div class="tab-pane" id="airtemperature2">
+                  
+                </div>
+                <div class="tab-pane" id="watertemperature2">
+                      
+                </div>
+                <div class="tab-pane" id="waterflow2">
+               
+                </div>
+            </div> -->
+    </div>
+    
+
     </div>
   </div>
-</div>
-
-
-
 </body>
-<script type="text/javascript" src="scatterchart2.js"></script>
+ <script type="text/javascript" src="scatterchart2.js"></script>
 </html>

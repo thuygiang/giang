@@ -435,13 +435,7 @@ async function getArr(field) {
 
   console.log(arr);
   getHumn(field, arr);
-  // getHumn('airt', arr);
-  // getHumn('pts', arr);
-  // getHumn('watert', arr);
-  // getHumn('waterf', arr);
-    
-
-
+  
 }
 
 
@@ -453,7 +447,7 @@ async function getArr(field) {
 const app_2 = new Vue({
       el : "#app_2", 
       data  :{ 
-          light: 0, 
+          light: 'Loading...', 
        },
       create: function () {
         this.getLight();
@@ -481,7 +475,7 @@ setInterval(() => {
  const app_1 = new Vue({
       el : "#app_1", 
       data  :{ 
-          humidity: 0, 
+          humidity: 'Loading...', 
        },
       create: function () {
         this.getHum();
@@ -509,7 +503,7 @@ setInterval(() => {
  const app_3 = new Vue({
       el : "#app_3", 
       data  :{ 
-         airt : 0, 
+         airt : 'Loading...', 
        },
       create: function () {
         this.getAirt();
@@ -537,7 +531,7 @@ setInterval(() => {
   const app_4 = new Vue({
       el : "#app_4", 
       data  :{ 
-         watert : 0, 
+         watert : 'Loading...', 
        },
       create: function () {
         this.getWatert();
@@ -564,7 +558,7 @@ setInterval(() => {
     const app_5 = new Vue({
       el : "#app_5", 
       data  :{ 
-         waterf : 0, 
+         waterf : 'Loading...', 
        },
       create: function () {
         this.getWatert();

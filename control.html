@@ -5,14 +5,12 @@
     <script type="text/javascript" src="http://mbostock.github.com/d3/d3.v2.js" charset="utf-8"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://freetuts.net/cnd/js/vuejs/vue_2.3.4.js"></script>
-    <script type="text/javascript" src="vueApp.js"></script>
-
     <style>
         
     circle:hover {
         background-color: #FFFFFF;
     }
-  </style>
+    </style>
 
   <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -72,21 +70,31 @@
       <table class="zebra">
         <div v-for="result in results">
         <tr>
-          <td>PUMP-1</td>
+          <td>MODE</td>
           <td>
             <div id="app_11">
-              {{ ... }}
+              {{ mode }}
             </div>
           </td>
-          
         </tr>
         <tr>
-          <td>PUMP-2</td>
+          <td>PUMP-1</td>
           <td>
             <div id="app_22">
-              <p>{{ .... }}</p>
+              <p>{{ pump1s }}</p>
             </div>
           </td>
+        </tr>
+
+         <tr>
+          <td>PUMP-2</td>
+          <td>
+            <div id="app_33">
+              <p>{{ pump2s }}</p>
+            </div>
+          </td>
+        </tr>
+
       </table>
       </div>          
     </div>
@@ -95,35 +103,12 @@
 
           <h2>AUTO IRRIGATION</h2>
     <div class="tabbable">
-            <ul class="nav nav-tabs">
-               <!--  <li class="active Humidity"><a class="Humidity" href="#humidity" data-toggle="tab">Humidity</a></li>
-                <li class="Light"><a class="Light" href="#light" data-toggle="tab">Light</a></li>
-                <li class="Airtemperature"><a class="Airtemperature" href="#airtemperature" data-toggle="tab">Air temp</a></li>
-                <li class="Watertemperature"><a class="Watertemperature" href="#watertemperature" data-toggle="tab">Water temp</a></li>
-                <li class="Waterflow"><a class="Waterflow" href="#waterflow" data-toggle="tab">Water flow</a></li> -->
-            </ul>
-           <!--  <div class="tab-content">
-                <div class="tab-pane active" id="humidity2">
-                  
-                </div>
-                <div class="tab-pane" id="light2">
-                    
-                </div>
-                <div class="tab-pane" id="airtemperature2">
-                  
-                </div>
-                <div class="tab-pane" id="watertemperature2">
-                      
-                </div>
-                <div class="tab-pane" id="waterflow2">
-               
-                </div>
-            </div> -->
+            <ul class="nav nav-tabs"></ul>
     </div>
     
 
     </div>
   </div>
 </body>
- <script type="text/javascript" src="scatterchart2.js"></script>
+ <script type="text/javascript" src="control.js"></script>
 </html>

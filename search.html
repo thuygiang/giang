@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Auto Irrigation</title>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.v2.js" charset="utf-8"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://freetuts.net/cnd/js/vuejs/vue_2.3.4.js"></script>
+    <script type="text/javascript" src="vueApp.js"></script>
+
+    <style>
+        
+    circle:hover {
+        background-color: #FFFFFF;
+    }
+  </style>
+
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  </head>
+  <body>
+ 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script type="text/javascript" src="jquery.cookie.js"></script>
+
+
+<script type="text/javascript">
+  if(sessionStorage.getItem("start") != 'true') {
+    window.location = 'signIn.html';
+  }
+
+</script>
+<script type="text/javascript">
+    // window.location.href = 'file:///C:/Users/admin/Desktop/simplechart/signIn.html';
+</script>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="nav-bar header">
+        <a class="navbar-brand">HCMUS</a>
+      </div>    
+    
+
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="index.html">HOME</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          <li><a>ADMIN</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="signIn.html">Log out</a></li>
+        </ul>
+      </li>
+      </ul>
+        
+    </div>            
+  </div>
+  </nav>
+  <script type="text/javascript">
+         $(function() {
+            $( ".datepicker" ).datepicker();
+            $( ".datepicker" ).datepicker("setDate", "10w+1");
+         });
+  </script>
+   <p>Enter Date: </p>
+  <input type="text" name="date" id="date" class="datepicker"/>
+  <input type="text" name="hour" id="hour" placeholder="Nhap gio can tim" min=0 max=23/>
+  <button class="button" id="buttondate">ENTER</button>
+  <table id='tabledate'>
+    
+  </table>
+  <script type="text/javascript">
+
+    function getData(Y, M, D) {
+
+      var d = ("0" + D).slice(-2);
+      var m = ("0" + M).slice(-2);
+      var y = Y;
+      var arr=[];
+      url ='http://demo-arisite.net:3000/sensors/date?' + 'year=' + y + '&month=' + m + '&date=' + d;
+      axios.get(url
+        ).then(function(response) {
+          var hour= $("#hour").val() || 'full';
+          console.log(hour);
+          if(hour != 'full') {
+            var hour = $("#hour").val();
+            console.log(hour);
+
+            for(var j= 0; j < (response.data).length; j++) {
+              var h = new Date(response.data[j].time).getHours();
+              console.log(h);
+                if(h == hour) {
+                  arr.push(response.data[j]);
+                }
+            }
+            console.log(arr);
+
+          }
+          else {
+            console.log('hour');
+            arr = response.data;
+            console.log(arr);
+          }
+
+
+
+          $('#tabledate').html('');
+          $('#tabledate').append('<tr>'+
+            // '<th>pump1c</th>'+
+            // '<th>pump2c</th>'+
+            // '<th>pump1s</th>'+
+            // '<th>pump2s</th>'+
+            // '<th>mode</th>'+
+            '<th>AirTemp</th>'+
+            '<th>Humidity</th>'+
+            '<th>Light</th>'+
+            '<th>Distance</th>'+
+            '<th>WaterTemp</th>'+
+            '<th>WaterFlow</th>'+
+            '<th>Time</th>'+
+            '</tr>');
+
+            for(var i=0; i < arr.length; i++) {
+               $('#tabledate').append('<tr>'+
+                    // '<td>'+arr[i].pump1c+'</td>'+
+                    // '<td>'+arr[i].pump2c+'</td>'+
+                    // '<td>'+arr[i].pump1s+'</td>'+
+                    // '<td>'+arr[i].pump2s+'</td>'+
+                    // '<td>'+arr[i].mode+'</td>'+
+                    '<td>'+arr[i].airt+'</td>'+
+                    '<td>'+arr[i].hum+'</td>'+
+                    '<td>'+arr[i].pts+'</td>'+
+                    '<td>'+arr[i].dis+'</td>'+
+                    '<td>'+arr[i].watert+'</td>'+
+                    '<td>'+arr[i].waterf+'</td>'+
+                    '<td>'+arr[i].time+'</td>'+
+                    '</tr>');
+
+            }
+
+
+        }).catch(function(err){
+          console.log(err);
+        });
+    }
+    
+    $("#buttondate").click(function() {
+      var day= $("#date").val();
+      var d, m, y;
+      d= new Date(day).getDate();
+      m= new Date(day).getMonth()+1;
+      y= new Date(day).getFullYear();
+      getData(y, m, d);
+
+
+    })
+  </script>
+</body>
+</html>

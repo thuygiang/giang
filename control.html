@@ -5,6 +5,7 @@
     <script type="text/javascript" src="http://mbostock.github.com/d3/d3.v2.js" charset="utf-8"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://freetuts.net/cnd/js/vuejs/vue_2.3.4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js"></script>
     <style>
         
     circle:hover {
@@ -51,7 +52,7 @@
            <ul class="dropdown-menu">
           <li><a>ADMIN</a></li>
           <li role="separator" class="divider"></li>
-          <li><a href="signIn.html">Log out</a></li>
+          <li><a href="signIn.html">Sign out</a></li>
         </ul>
         </li>
       </ul> 
@@ -104,11 +105,14 @@
           <h2>AUTO IRRIGATION</h2>
     <div class="tabbable">
             <ul class="nav nav-tabs"></ul>
+            <button class="button" id="bt1">PUMP1 CONTROL</button>
+            <button class="button" id="bt2">PUMP2 CONTROL</button>
     </div>
     
 
     </div>
   </div>
 </body>
+
  <script type="text/javascript" src="control.js"></script>
 </html>

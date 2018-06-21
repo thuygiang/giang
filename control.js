@@ -40,12 +40,12 @@ const app_22 = new Vue({
       },
       methods: {
          getPump1s: function() {
-  url = 'http://demo-arisite.net:3000/sensors';
+  url = 'http://demo-arisite.net:3000/status/get';
    var app=this;
   axios.get(url
   ).then(function(response) {
     app.pump1s = response.data.pump1s; 
-    if(app.pump1s==1) {
+    if(app.pump1s==true) {
       app.pump1s='ON';
     }
     else {
@@ -71,12 +71,12 @@ const app_33 = new Vue({
       },
       methods: {
          getPump2s: function() {
-  url = 'http://demo-arisite.net:3000/sensors';
+  url = 'http://demo-arisite.net:3000/status/get';
    var app=this;
   axios.get(url
   ).then(function(response) {
     app.pump2s = response.data.pump2s; 
-    if(app.pump2s==1) {
+    if(app.pump2s==true) {
       app.pump2s='ON';
     }
     else {
@@ -91,3 +91,27 @@ const app_33 = new Vue({
 setInterval(() => {
   app_33.getPump2s();
 },5*1000);
+///////////////////
+var mqtt;
+   var reconnectTimeout=2000;
+   var host="broker.mqttdashboard.com";
+   var port=8000;
+
+   function onConnect(){
+    console.log("Connected");
+    message = new Paho.MQTT.Message("asdasd");
+    message.destinationName ="sensor1";
+    mqtt.send(message);
+    console.log("Success!! Topic: " + message.destinationName + " Message: " + message  )
+   }
+
+   function MQTTconnect(){
+    console.log("connecting to " + host + " " + port);
+    mqtt = new Paho.MQTT.Client(host,port,"clientjs");
+     var options = {
+      timeout: 3,
+      onSuccess: onConnect,
+     };
+    mqtt.connect(options); 
+   }
+   MQTTconnect();

@@ -651,4 +651,3 @@ waterf.addEventListener('click', function(){
 	getArr('waterf');
 });
 
-
